@@ -34,7 +34,7 @@ def gen_consultation(employees: list, end_range: date, clients: list, max_contra
 
 
 def firing_machine(employees: list, start_range: date, end_range: date):
-    fired_employees = random.choices(employees, k=random.randint(1, len(employees) // 3))
+    fired_employees = random.sample(employees, k=random.randint(1, len(employees) // 3))
     for employee in fired_employees:
         fired_date = Faker().date_between(start_range, end_range)
         employee.fired_date = fired_date

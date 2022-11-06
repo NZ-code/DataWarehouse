@@ -36,7 +36,7 @@ class Consultation:
 
         possible_project_employees = list(
             filter(lambda e: e.fire_date is None or self.contract.begin_at < e.fire_date, employees))
-        project_employees = random.choices(possible_project_employees, k=random.randint(1, 5))
+        project_employees = random.sample(possible_project_employees, k=random.randint(1, 5))
         for employee in project_employees:
             add_contract_employee(employee, self.contract)
 
