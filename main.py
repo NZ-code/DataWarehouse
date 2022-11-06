@@ -72,6 +72,18 @@ def main():
 
     firing_machine(employees, t1, t2)
 
+    for i in range(number):
+        employees.append(gen_employee( t1,t2))
+
+    clients = []
+    for i in range(number):
+        clients.append(Client(fake.name()))
+
+    consultations = []
+    active_employees = list(filter( lambda e :  e.fire_date is None or e.fire_date > t1  ,employees))
+    for i in range(number):
+        consultations.append(gen_consultation(active_employees, t2, clients))
+
 
 if __name__ == '__main__':
     main()
