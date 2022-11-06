@@ -29,6 +29,9 @@ class Contract:
         self.is_accepted = is_accepted
         self.employees = []
 
+    def set_employees(self, employees: List[Employee]):
+        self.employees = employees
+
     def __str__(self):
         return "Contract( id:" + str(self.id) + ", " + str(self.price) + ", " + str(self.team_count) + ", " + str(
             self.client) + ", " + str(self.begin_at) + ", " + str(self.closed_at) + ", " + str(
