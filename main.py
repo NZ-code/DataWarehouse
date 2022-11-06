@@ -30,7 +30,7 @@ def main():
     contracts = []
     for i in range(number):
         contracts.append(
-            Contract(random.randint(20, 100), random.randint(2, 8), random.choice(clients), fake.date(), fake.date(),
+            Contract(random.randint(20, 100), random.choice(clients), fake.date(), fake.date(),
                      random.choice(list(ServiceType)), bool(random.getrandbits(1))))
 
     add_contract_employee(employees,contracts)
@@ -51,5 +51,6 @@ def main():
     for contract in contracts:
         for employee in contract.employees:
             print(str(contract.id) +","+str(employee.id))
+
 if __name__ == '__main__':
     main()

@@ -16,12 +16,12 @@ class ServiceType(Enum):
 class Contract:
     idGen = 0
 
-    def __init__(self, price, team_count, client: Client, begin_at, closed_at, service_type: ServiceType,
+    def __init__(self, price, client: Client, begin_at, closed_at, service_type: ServiceType,
                  is_accepted: bool):
         Contract.idGen += 1
         self.id = self.idGen
         self.price = price
-        self.team_count = team_count
+        self.team_count = 0
         self.client = client
         self.begin_at = begin_at
         self.closed_at = closed_at
@@ -31,6 +31,7 @@ class Contract:
 
     def add_employee(self, employee: Employee):
         self.employees.append(employee)
+        self.team_count = len(self.employees)
 
     def __str__(self):
         return "Contract( id:" + str(self.id) + ", " + str(self.price) + ", " + str(self.team_count) + ", " + str(
