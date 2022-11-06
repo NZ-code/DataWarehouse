@@ -7,12 +7,13 @@ from Client import Client
 from Employee import Employee
 from Contract import ServiceType
 
-def add_contract_employee(number, employees: list, contracts: list):
-    for i in range(number):
-        contract = random.choice(contracts)
-        employee = random.choice(employees)
-        contract.add_employee(employee)
-        employee.add_contract(contract)
+
+def add_contract_employee(employees: list, contracts: list):
+    for contract in contracts:
+        for i in range(random.randint(1, 5)):
+            employee = random.choice(employees)
+            contract.add_employee(employee)
+            employee.add_contract(contract)
 
 
 def main():
@@ -32,7 +33,7 @@ def main():
             Contract(random.randint(20, 100), random.randint(2, 8), random.choice(clients), fake.date(), fake.date(),
                      random.choice(list(ServiceType)), bool(random.getrandbits(1))))
 
-    add_contract_employee(15,employees,contracts)
+    add_contract_employee(employees,contracts)
 
     consultations = []
     for i in range(number):
