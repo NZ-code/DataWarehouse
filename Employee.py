@@ -18,7 +18,7 @@ class Employee:
 
     def __str__(self):
         return "Employee( id:" + str(self.id) + ", name:" + str(self.name) + ", hire_date:" + str(
-            self.hire_date) + ", fire_date:" + str(self.fire_date)+", contracts:" + str(self.contracts) + ")"
+            self.hire_date) + ", fire_date:" + str(self.fire_date)+")"
 
     def __repr__(self):
         return str(self)
