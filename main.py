@@ -14,7 +14,6 @@ def gen_employee(start_range: date, end_range: date):
     hire_date = fake.date_between(start_range, end_range)
 
     min_work_days = 60
-    min_month = timedelta(days=min_work_days)
     max_work_days = (end_range - hire_date).days
 
     chance_of_firing = 10
@@ -30,7 +29,7 @@ def gen_consultation(employees: list, end_range: date, clients: list):
     consultant = random.choice(employees)
     consultation_date = fake.date_between(consultant.hire_date, consultant.fire_date or end_range)
     return Consultation(random.randint(2, 8), random.randint(20, 100), consultant, consultation_date,
-                        random.choice(clients))
+                        random.choice(clients), employees)
 
 
 
@@ -39,7 +38,7 @@ def gen_consultation(employees: list, end_range: date, clients: list):
 def main():
     company_start = date(year=2006, month=3, day=20)
     t1 = date(year=2010, month=8, day=27)
-    number = 10
+    number = 100
     fake = Faker()
 
     employees = []
@@ -54,11 +53,11 @@ def main():
     for i in range(number):
         consultations.append(gen_consultation(employees, t1, clients))
 
-    [print(object) for object in clients]
-    print()
-    [print(object) for object in consultations]
-    print()
-    [print(object) for object in employees]
+    # [print(object) for object in clients]
+    # print()
+    # [print(object) for object in consultations]
+    # print()
+    # [print(object) for object in employees]
 
 
 if __name__ == '__main__':
