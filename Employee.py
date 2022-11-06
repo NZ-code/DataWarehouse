@@ -2,6 +2,7 @@ from typing import List
 
 import Contract
 
+
 class Employee:
     idGen = 0
 
@@ -18,7 +19,14 @@ class Employee:
 
     def __str__(self):
         return "Employee( id:" + str(self.id) + ", name:" + str(self.name) + ", hire_date:" + str(
-            self.hire_date) + ", fire_date:" + str(self.fire_date)+")"
+            self.hire_date) + ", fire_date:" + str(self.fire_date) + ")"
 
     def __repr__(self):
         return str(self)
+
+    @staticmethod
+    def get_header():
+        return ['id', 'name', 'hire_date', 'fire_date']
+
+    def get_csv_format(self):
+        return [self.id, self.name, self.hire_date, self.fire_date]

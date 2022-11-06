@@ -25,7 +25,7 @@ def gen_employee(start_range: date, end_range: date):
     return Employee(fake.name(), hire_date, fire_date)
 
 
-def gen_consultation(employees: list, end_range: date, clients: list):
+def gen_consultation(employees: list, end_range: date, clients: list, max_contract_end_date):
     fake = Faker()
     consultant = random.choice(employees)
     consultation_date = fake.date_between(consultant.hire_date, consultant.fire_date or end_range)
@@ -40,10 +40,40 @@ def firing_machine(employees: list, start_range: date, end_range: date):
         employee.fired_date = fired_date
 
 
-max_contract_end_date = date(2030, 1, 1)
+def list_to_csv(list_of_objects: list, file_name: str):
+    class_type = list_of_objects[0].__class__
+    header = class_type.get_header()
+    data = [o.get_csv_format() for o in list_of_objects]
+
+    with open(file_name, 'w', encoding='UTF8', newline='') as f:
+        writer = csv.writer(f)
+
+        # write the header
+        writer.writerow(header)
+
+        # write multiple rows
+        writer.writerows(data)
+
+
+def contract_employee_to_csv(contracts: list, file_name: str):
+    header = ['contract_id', 'employee_id']
+    data = []
+    for contract in contracts:
+        for employee in contract._employees:
+            data.append([contract.id, employee.id])
+
+    with open(file_name, 'w', encoding='UTF8', newline='') as f:
+        writer = csv.writer(f)
+
+        # write the header
+        writer.writerow(header)
+
+        # write multiple rows
+        writer.writerows(data)
 
 
 def main():
+    max_contract_end_date = date(2030, 1, 1)
     ## t1
     company_start = date(year=2006, month=3, day=20)
     t1 = date(year=2010, month=8, day=27)
@@ -61,7 +91,7 @@ def main():
 
     consultations = []
     for i in range(number):
-        consultations.append(gen_consultation(employees, t1, clients))
+        consultations.append(gen_consultation(employees, t1, clients, max_contract_end_date))
 
     # [print(object) for object in clients]
     # print()
@@ -81,19 +111,17 @@ def main():
 
     active_employees = list(filter(lambda e: e.fire_date is None or e.fire_date > t1, employees))
     for i in range(number):
-        consultations.append(gen_consultation(active_employees, t2, clients))
+        consultations.append(gen_consultation(active_employees, t2, clients, max_contract_end_date))
 
-    client_header = Client.get_header()
-    data = [client.get_csv_format() for client in clients]
+    contracts = [consultation.contract for consultation in consultations]
 
-    with open('clients.csv', 'w', encoding='UTF8', newline='') as f:
-        writer = csv.writer(f)
+    list_to_csv(employees,'csv/employees.csv')
 
-        # write the header
-        writer.writerow(client_header)
+    list_to_csv(clients, 'csv/clients.csv')
+    list_to_csv(consultations, 'csv/consultations.csv')
+    list_to_csv(contracts, 'csv/contracts.csv')
 
-        # write multiple rows
-        writer.writerows(data)
+    contract_employee_to_csv(contracts, 'csv/contract_employee')
 
 
 if __name__ == '__main__':

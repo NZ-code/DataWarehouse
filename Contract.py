@@ -1,16 +1,17 @@
-
-
 import Employee
 from Client import Client
 from enum import Enum
 
 
 class ServiceType(Enum):
-    LOGO = 1
-    POSTER = 2
-    TEXT = 3
-    VIDEO = 4
-    MEDIA_CARE = 5
+    LOGO = 'logo'
+    POSTER = 'poster'
+    TEXT = 'text'
+    VIDEO = 'video'
+    MEDIA_CARE = 'media care'
+
+    def __str__(self):
+        return str(self.value)
 
 
 class Contract:
@@ -43,3 +44,11 @@ class Contract:
 
     def __repr__(self):
         return str(self)
+
+    @staticmethod
+    def get_header():
+        return ['id', 'price', 'team_count', 'client_id', 'begin_at', 'closed_at', 'service_type', 'is_accepted']
+
+    def get_csv_format(self):
+        return [self.id, self.price, self.team_count, self.client.id, self.begin_at, self.closed_at, self.service_type,
+                self.is_accepted]

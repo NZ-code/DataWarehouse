@@ -40,11 +40,12 @@ class Consultation:
         for employee in project_employees:
             add_contract_employee(employee, self.contract)
 
-    def get_header(self):
-        return ['id', 'duration', 'hourly_rate', 'employee_id', 'consultation_date', 'contract_id']
+    @staticmethod
+    def get_header():
+        return ['id', 'duration', 'hourly_rate', 'employee_id', 'contract_id','date']
 
     def get_csv_format(self):
-        return [self.id, self.duration, self.hourly_rate, self.employee.id, self.consultation_date, self.contract.id]
+        return [self.id, self.duration, self.hourly_rate, self.employee.id, self.contract.id, self.consultation_date]
 
     def __str__(self):
         return "Consultation( id:" + str(self.id) + ", duration:" + str(self.duration) + ", hourly_rate:" + str(
