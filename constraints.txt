@@ -1,0 +1,31 @@
+
+T1
+employee 
+hire_date  [ Company created, T1]
+var min_month_worked = 3
+var work_duration =random(min_month_worked, T1  - hire_date)
+
+chance_of_firing = 10%.
+fire_date [null or hire_date + work_duration] 
+if t1 - hireddate <= min_month_worked =>firedate = null
+
+
+consultation
+
+date 
+
+pick random employee
+
+condultation.date = random[employee.hire_date, fire_date ?? t1]
+chance of acceptiong contract = 40%
+
+contract
+
+date_start=consultation.date
+var min_month_duration = 6
+var contract_duration =random(min_month_duration, T2-date_start)
+date_end = date_start + contract_duration
+
+employees = employees.filter(
+    (fire_date > contract.date_start or firedate == null) and(hire_date <=contract.date_start ),
+)
