@@ -121,7 +121,7 @@ def main():
     list_to_csv(consultations, 'csv/consultations.csv')
     list_to_csv(contracts, 'csv/contracts.csv')
 
-    contract_employee_to_csv(contracts, 'csv/contract_employee')
+    contract_employee_to_csv(contracts, 'csv/contract_employee.csv')
 
 
 if __name__ == '__main__':
