@@ -29,7 +29,7 @@ def gen_consultation(employees: list, end_range: date, clients: list):
     consultant = random.choice(employees)
     consultation_date = fake.date_between(consultant.hire_date, consultant.fire_date or end_range)
     return Consultation(random.randint(2, 8), random.randint(20, 100), consultant, consultation_date,
-                        random.choice(clients), employees)
+                        random.choice(clients), employees, max_contract_end_date)
 
 
 def firing_machine(employees: list, start_range: date, end_range: date):
