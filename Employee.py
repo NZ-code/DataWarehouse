@@ -1,6 +1,6 @@
 from typing import List
 
-from Contract import Contract
+import Contract
 
 class Employee:
     idGen = 0

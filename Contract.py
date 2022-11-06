@@ -1,6 +1,6 @@
 from typing import List
 
-from Employee import Employee
+import Employee
 from Client import Client
 from enum import Enum
 

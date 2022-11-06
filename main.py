@@ -5,6 +5,7 @@ from Contract import Contract
 from Consultation import Consultation
 from Client import Client
 from Employee import Employee
+from Contract import ServiceType
 
 
 def main():
@@ -26,7 +27,9 @@ def main():
 
     contracts = []
     for i in range(number):
-        contracts.append(Contract)
+        contracts.append(
+            Contract(random.randint(20, 100), random.randint(2, 8), random.choice(clients), fake.date(), fake.date(),
+                     random.choice(list(ServiceType)), bool(random.getrandbits(1))))
 
     [print(object) for object in contracts]
     print()
