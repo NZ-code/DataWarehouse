@@ -26,6 +26,60 @@ var min_month_duration = 6
 var contract_duration =random(min_month_duration, T2-date_start)
 date_end = date_start + contract_duration
 
+
+num_employees = 1..5
 employees = employees.filter(
     (fire_date > contract.date_start or firedate == null) and(hire_date <=contract.date_start ),
-)
+).randompick(num_employees)
+
+
+T2
+
+
+update
+
+
+fired_employees = employees.pickrandom()
+
+for employee in employees:
+    fire_date = random(T1 AND T2)
+    employee.setfiredDate(fire_date)
+
+create 
+
+employee 
+hire_date  [ T1,T2]
+var min_month_worked = 3
+var work_duration =random(min_month_worked, T2  - hire_date)
+
+chance_of_firing = 10%.
+fire_date [null or hire_date + work_duration] 
+if t1 - hireddate <= min_month_worked =>firedate = null
+
+
+consultation
+
+
+date 
+
+pick random employee(where fire_date > t1 or fire_date == null)
+
+condultation.date = random[employee.hire_date, fire_date ?? t2]
+chance of acceptiong contract = 40%
+
+
+contract
+date_start=consultation.date
+var min_month_duration = 6
+var contract_duration =random(min_month_duration, T2-date_start)
+date_end = date_start + contract_duration
+
+
+num_employees = 1..5
+employees = employees.filter(
+    (fire_date > contract.date_start or firedate == null) and(hire_date <=contract.date_start ),
+).randompick(num_employees)
+
+
+
+
