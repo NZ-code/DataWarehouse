@@ -35,6 +35,10 @@ class Consultation:
         self.consultation_date = consultation_date
         self.contract = _gen_contract(client, consultation_date)
         
+        possible_project_employees = list(filter(lambda employee: employee.fire_date == None or self.contract.begin_at < employee.fire_date,employees))
+        project_employees = random.choises(possible_project_employees,k = random.randint(1,5))
+        for employee in project_employees:
+            add_contract_employee(employee, self.contract)
 
     def __str__(self):
         return "Consultation( id:" + str(self.id) + ", duration:" + str(self.duration) + ", hourly_rate:" + str(
