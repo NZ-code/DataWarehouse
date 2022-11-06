@@ -13,8 +13,8 @@ class Employee:
         self.fire_date = fire_date
         self.contracts = []
 
-    def set_contracts(self, contracts: list):
-        self.contracts = contracts
+    def add_contract(self, contract: Contract):
+        self.contracts.append(contract)
 
     def __str__(self):
         return "Employee( id:" + str(self.id) + ", name:" + str(self.name) + ", hire_date:" + str(
