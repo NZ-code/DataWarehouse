@@ -32,7 +32,7 @@ def gen_consultation(employees: list, end_range: date, clients: list):
                         random.choice(clients), employees)
 
 
-
+max_contract_end_date = date(2030, 1, 1)
 
 
 def main():

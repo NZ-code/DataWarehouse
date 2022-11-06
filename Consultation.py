@@ -4,7 +4,7 @@ from datetime import timedelta, date
 import random
 from Contract import ServiceType
 from Client import Client
-
+from main import max_contract_end_date
 
 def add_contract_employee(employee: Employee, contract: Contract):
     contract.add_employee(employee)
@@ -12,7 +12,6 @@ def add_contract_employee(employee: Employee, contract: Contract):
 
 
 def _gen_contract(client: Client, consultation_date: date):
-    max_contract_end_date = date(2030, 1, 1)
     date_start = consultation_date
     min_duration_days = 180
     contract_duration = random.randint(min_duration_days, (max_contract_end_date - date_start).days)
