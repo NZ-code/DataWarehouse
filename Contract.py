@@ -1,4 +1,4 @@
-from typing import List
+
 
 import Employee
 from Client import Client
@@ -29,7 +29,7 @@ class Contract:
         self.is_accepted = is_accepted
         self.employees = []
 
-    def set_employees(self, employees: List[Employee]):
+    def set_employees(self, employees: list):
         self.employees = employees
 
     def __str__(self):

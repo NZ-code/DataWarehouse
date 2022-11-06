@@ -13,7 +13,7 @@ class Employee:
         self.fire_date = fire_date
         self.contracts = []
 
-    def set_contracts(self, contracts: List[Contract]):
+    def set_contracts(self, contracts: list):
         self.contracts = contracts
 
     def __str__(self):
