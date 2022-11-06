@@ -51,4 +51,4 @@ class Contract:
 
     def get_csv_format(self):
         return [self.id, self.price, self.team_count, self.client.id, self.begin_at, self.closed_at, self.service_type,
-                self.is_accepted]
+                int(self.is_accepted)]
