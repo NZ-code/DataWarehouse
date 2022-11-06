@@ -11,10 +11,10 @@ class Employee:
         self.name = name
         self.hire_date = hire_date
         self.fire_date = fire_date
-        self.contracts = []
+        self._contracts = []
 
     def add_contract(self, contract: Contract):
-        self.contracts.append(contract)
+        self._contracts.append(contract)
 
     def __str__(self):
         return "Employee( id:" + str(self.id) + ", name:" + str(self.name) + ", hire_date:" + str(

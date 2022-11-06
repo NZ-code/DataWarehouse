@@ -27,16 +27,19 @@ class Contract:
         self.closed_at = closed_at
         self.service_type = service_type
         self.is_accepted = is_accepted
-        self.employees = []
+        self._employees = []
+
+    def get_employees(self):
+        return self._employees
 
     def add_employee(self, employee: Employee):
-        self.employees.append(employee)
-        self.team_count = len(self.employees)
+        self._employees.append(employee)
+        self.team_count = len(self._employees)
 
     def __str__(self):
         return "Contract( id:" + str(self.id) + ", " + str(self.price) + ", " + str(self.team_count) + ", " + str(
             self.client) + ", " + str(self.begin_at) + ", " + str(self.closed_at) + ", " + str(
-            self.service_type) + ", " + str(self.is_accepted) + ", employees:" + str(self.employees) + ")"
+            self.service_type) + ", " + str(self.is_accepted) + ", employees:" + str(self._employees) + ")"
 
     def __repr__(self):
         return str(self)

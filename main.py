@@ -49,7 +49,7 @@ def main():
     [print(object) for object in employees]
 
     for contract in contracts:
-        for employee in contract.employees:
+        for employee in contract.get_employees():
             print(str(contract.id) +","+str(employee.id))
 
 if __name__ == '__main__':
