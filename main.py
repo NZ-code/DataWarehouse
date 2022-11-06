@@ -1,11 +1,12 @@
 from faker import Faker
 import random
 from datetime import timedelta, date
-from Contract import Contract
+
 from Consultation import Consultation
 from Client import Client
 from Employee import Employee
-from Contract import ServiceType
+
+import csv
 
 
 def gen_employee(start_range: date, end_range: date):
@@ -47,7 +48,7 @@ def main():
     company_start = date(year=2006, month=3, day=20)
     t1 = date(year=2010, month=8, day=27)
     t2 = date(year=2016, month=10, day=13)
-    number = 100
+    number = 10
     fake = Faker()
 
     employees = []
@@ -73,16 +74,26 @@ def main():
     firing_machine(employees, t1, t2)
 
     for i in range(number):
-        employees.append(gen_employee( t1,t2))
+        employees.append(gen_employee(t1, t2))
 
-    clients = []
     for i in range(number):
         clients.append(Client(fake.name()))
 
-    consultations = []
-    active_employees = list(filter( lambda e :  e.fire_date is None or e.fire_date > t1  ,employees))
+    active_employees = list(filter(lambda e: e.fire_date is None or e.fire_date > t1, employees))
     for i in range(number):
         consultations.append(gen_consultation(active_employees, t2, clients))
+
+    client_header = Client.get_header()
+    data = [client.get_csv_format() for client in clients]
+
+    with open('clients.csv', 'w', encoding='UTF8', newline='') as f:
+        writer = csv.writer(f)
+
+        # write the header
+        writer.writerow(client_header)
+
+        # write multiple rows
+        writer.writerows(data)
 
 
 if __name__ == '__main__':
