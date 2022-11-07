@@ -93,11 +93,15 @@ def main():
     for i in range(number):
         consultations.append(gen_consultation(employees, t1, clients, max_contract_end_date))
 
-    # [print(object) for object in clients]
-    # print()
-    # [print(object) for object in consultations]
-    # print()
-    # [print(object) for object in employees]
+    contracts = [consultation.contract for consultation in consultations]
+
+    list_to_csv(employees, 'csv_t1/employees.csv')
+
+    list_to_csv(clients, 'csv_t1/clients.csv')
+    list_to_csv(consultations, 'csv_t1/consultations.csv')
+    list_to_csv(contracts, 'csv_t1/contracts.csv')
+
+    contract_employee_to_csv(contracts, 'csv_t1/contract_employee.csv')
 
     ## t2
 
@@ -115,13 +119,13 @@ def main():
 
     contracts = [consultation.contract for consultation in consultations]
 
-    list_to_csv(employees,'csv/employees.csv')
+    list_to_csv(employees, 'csv_t2/employees.csv')
 
-    list_to_csv(clients, 'csv/clients.csv')
-    list_to_csv(consultations, 'csv/consultations.csv')
-    list_to_csv(contracts, 'csv/contracts.csv')
+    list_to_csv(clients, 'csv_t2/clients.csv')
+    list_to_csv(consultations, 'csv_t2/consultations.csv')
+    list_to_csv(contracts, 'csv_t2/contracts.csv')
 
-    contract_employee_to_csv(contracts, 'csv/contract_employee.csv')
+    contract_employee_to_csv(contracts, 'csv_t2/contract_employee.csv')
 
 
 if __name__ == '__main__':
