@@ -78,7 +78,7 @@ def main():
     company_start = date(year=2006, month=3, day=20)
     t1 = date(year=2010, month=8, day=27)
     t2 = date(year=2016, month=10, day=13)
-    number = 10
+    number = 100
     fake = Faker()
 
     employees = []
